@@ -52,10 +52,10 @@ public class SolicitarSegundaVia extends HttpServlet {
 		String caso = request.getParameter("caso");
 		String carterinha = request.getParameter("carterinha");
 		String descricao = "Solicitar Segunda Via";
-		
-		HttpHost proxy = new HttpHost("172.16.1.234",8080);
-		
-		RequestConfig defaultRequestConfig = RequestConfig.custom()
+
+		//HttpHost proxy = new HttpHost("172.16.1.234",8080);
+
+		/*RequestConfig defaultRequestConfig = RequestConfig.custom()
 			    .setSocketTimeout(5000)
 			    .setConnectTimeout(5000)
 			    .setConnectionRequestTimeout(5000)
@@ -63,31 +63,31 @@ public class SolicitarSegundaVia extends HttpServlet {
 
 		RequestConfig requestConfig = RequestConfig.copy(defaultRequestConfig)
 			    .setProxy(new HttpHost("172.16.1.234", 8080))
-			    .build();
+			    .build();*/
 
 		CloseableHttpClient httpClient = null;
 		httpClient = HttpClients.createDefault();
-		
-		
+
+
 		List <NameValuePair> nvps = new ArrayList <NameValuePair>();
 		nvps.add(new BasicNameValuePair("grant_type", "password"));
 		nvps.add(new BasicNameValuePair("client_id", "3MVG9szVa2RxsqBY.Bb73gTmonzvkScPqSgqdbOk9xS4.vDoeZ.HWFd.nOwrFOM2vatmv4nJTJ46cIbLmyZ6H"));
 		nvps.add(new BasicNameValuePair("client_secret", "8525224555685524158"));
 		nvps.add(new BasicNameValuePair("username", "vsimao@odontoprev.demo"));
 		nvps.add(new BasicNameValuePair("password", "Salesforce1"));
-		
+
 		try {
 			URIBuilder uriBuilder = new URIBuilder("https://login.salesforce.com/services/oauth2/token").addParameters(nvps);
-		
+
 
 		HttpPost postRequest = new HttpPost(uriBuilder.build());
-		postRequest.setConfig(requestConfig);
+		//postRequest.setConfig(requestConfig);
 		postRequest.setHeader("Content-Type", "application/x-www-form-urlencoded");
 		CloseableHttpResponse resp = httpClient.execute(postRequest);
 
         System.out.println(EntityUtils.toString(resp.getEntity()));
 
-		
+
 		} catch (URISyntaxException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
