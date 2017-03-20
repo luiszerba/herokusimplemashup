@@ -35,7 +35,6 @@
 
             <div class="alert alert-info" role="alert">
               <%= request.getAttribute("action")%> executada com sucesso.
-              <a href="/index.jsp">Clique aqui</a> para voltar para página anterior
             </div>
     </div>
 
