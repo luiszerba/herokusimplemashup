@@ -25,7 +25,7 @@ public class LiberarSenha extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("action","Solicitar Segunda Via");
+		request.setAttribute("action","Liberar Senha");
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/resultado.jsp");
 		rd.forward(request,response);
 	}
