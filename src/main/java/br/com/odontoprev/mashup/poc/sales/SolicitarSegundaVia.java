@@ -13,6 +13,7 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -86,6 +87,12 @@ public class SolicitarSegundaVia extends HttpServlet {
 		CloseableHttpResponse resp = httpClient.execute(postRequest);
 
         System.out.println(EntityUtils.toString(resp.getEntity()));
+
+				request.setCharacterEncoding("UTF-8");
+				request.setAttribute("action","Solicitar Segunda Via");
+				RequestDispatcher rd = getServletContext().getRequestDispatcher("/resultado.jsp");
+				rd.forward(request,response);
+
 
 
 		} catch (URISyntaxException e) {
